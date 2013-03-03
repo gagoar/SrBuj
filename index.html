@@ -32,12 +32,81 @@
       <section>
         <h1>SrBuj</h1>
 
-<p>Better Unobtrusive JavaScript Request (for Rails and Jquery)</p>
+<p>Better Unobtrusive JavaScript Request (for Rails and jquery_ujs, bootstrap modal.js)</p>
 
-<p>in your console execute:</p>
+<p>Do you need render a partial in your web with out reload?, and make a modal out of it?
+Do you need remove an element from a list?
+Do you need replace an element before update?</p>
 
-<div class="highlight"><pre>bundle gem install srbuj
+<p>This unobtrusive scripting support file is developed for the Ruby on Rails framework, but is not strictly tied to any specific backend. You can drop this into any application to:</p>
+
+<ul>
+<li>get modals out of the box, via js</li>
+<li>make non-GET requests from hyperlinks</li>
+<li>make forms or hyperlinks submit data asynchronously with Ajax and handle the response in a dry way;</li>
+</ul><p>These features are achieved by adding certain ["data" attributes][data] to your HTML markup. In Rails, they are added by the framework's template helpers.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>[jQuery 1.7.x or higher][jquery];</li>
+<li>HTML5 doctype (optional).</li>
+</ul><p>If you don't use HTML5, adding "data" attributes to your HTML4 or XHTML pages might make them fail [W3C markup validation][validator]. However, this shouldn't create any issues for web browsers or other user agents.</p>
+
+<h2>Installation</h2>
+
+<p>For automated installation in Rails, use the "jquery-rails" gem. Place this in your Gemfile:</p>
+
+<div class="highlight"><pre>  <span class="n">gem</span> <span class="s1">'SrBuj'</span>
 </pre></div>
+
+<p>And run:</p>
+
+<pre><code>$ bundle install
+</code></pre>
+
+<p>This next step depends on your version of Rails.</p>
+
+<p>a. For Rails 3.1, add these lines to the top of your app/assets/javascripts/application.js file:</p>
+
+<div class="highlight"><pre><span class="c1">//= require jquery</span>
+<span class="c1">//= require jquery_ujs</span>
+<span class="c1">//= require SrBuj</span>
+</pre></div>
+
+<h2>Use</h2>
+
+<p>in your view (example with a link)</p>
+
+<div class="highlight"><pre> <span class="p">=</span> <span class="n">link_to</span> <span class="s1">'add Element'</span> <span class="n">elements_path</span><span class="p">,</span> <span class="n">remote</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="p">{</span><span class="n">target</span><span class="p">:</span> <span class="s1">'partial-id'</span><span class="p">,</span> <span class="n">modal</span><span class="p">:</span> <span class="kp">true</span><span class="p">}</span>
+
+
+<span class="nf">#partial-id</span>
+
+</pre></div>
+
+<p>in your controller</p>
+
+<div class="highlight"><pre>  <span class="k">def</span> <span class="nf">new</span>
+    <span class="vi">@element</span><span class="o">=</span> <span class="no">Element</span><span class="o">.</span><span class="n">new</span>
+    <span class="n">render</span> <span class="s1">'new'</span><span class="p">,</span> <span class="n">content_type</span><span class="p">:</span> <span class="s1">'text/html'</span>
+  <span class="k">end</span>
+</pre></div>
+
+<p>that's it.</p>
+
+<h2>Use:</h2>
+
+<ul>
+<li>data[target] = id Element in to render the response before success</li>
+<li>data[modal] = true|false if you wish that repsonse execute in modal (default false)</li>
+<li>data[error] = id Element In a form data[error] is the holder in witch de form re renders to show the errors</li>
+<li>data[replace] = true|false if you wish replace de data[target] element with the response content on success (default false)</li>
+<li>data[remote] &amp;&amp; data[target] = combined the success response execute a remove() over the target element</li>
+</ul><h2>Copyright</h2>
+
+<p>Copyright (c) 2013 gagoar. See LICENSE.txt for
+further details.</p>
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
