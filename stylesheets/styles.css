@@ -431,3 +431,10 @@ footer {
     color:#444;
   }
 }
+
+@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (max--moz-device-pixel-ratio: 2) {
+  header:before{
+    background-image: url(../images/srbuj-retina.png);
+    background-size: 219px 136px;
+  }
+}
