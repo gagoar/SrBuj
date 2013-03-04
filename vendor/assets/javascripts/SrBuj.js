@@ -11,27 +11,47 @@
   var SrBuj;
   $.SrBuj = SrBuj = {
     selector: '[data-remote][data-target]',
+    changeDom: function(method,$target,data){
+      switch(method){
+        case 'POST':
+          $target.append(data);
+          break;
+        case 'PUT':
+        case 'PATCH':
+          $target.replaceWith(data);
+        break;
+        case 'DELETE':
+          $target.remove();
+          break;
+        default:
+          $target.html(data);
+      }
 
+    },
     success: function(e, data){
       var $el = $(e.target),
-      ismodal = $el.data('modal') || false,
-      replace = $el.data('replace') || false,
-      remove = $el.attr('method') == 'delete' || false,
-      fn = $el.data('callback'),
-      callback = (typeof  fn == 'function') ? fn : window[fn],
-      target = document.getElementById($el.data('target')),
-      wrapper = document.getElementById($el.data('error')),
-      $target = $(target);
-      if(remove) $target.remove();
-      else replace ? $target.replaceWith(data) : $target.html(data);
-      if(ismodal) wrapper ? $(wrapper).modal('toggle') : $target.modal('toggle');
+          isModal = $el.data('modal') || false,
+          verb = $el.attr('method') || 'GET',
+          method = ( verb.toUpperCase() == 'POST' && $el.data('replace')) ? 'PUT' : verb.toUpperCase();
+          change = $el.attr('nochange') || true,
+          fn = $el.data('callback'),
+          callback = (typeof  fn == 'function') ? fn : window[fn],
+          target = document.getElementById($el.data('target')),
+          wrapper = document.getElementById($el.data('error')),
+          $target = $(target);
+
+      if(change) $.SrBuj.changeDom(method.toUpperCase(),$target,data);
+      if(isModal) wrapper ? $(wrapper).modal('toggle') : $target.modal('toggle');
       if(callback) callback.apply(this,[e, data]);
 
     },
     fail: function(e, data){
       var $el = $(e.target),
       error = document.getElementById($el.data('error'));
-      $(error).html(data.responseText);
+      if( error )
+        $.SrBuj.changeDom('ERROR', $(error), data.responseText);
+      else
+        throw 'cant find data-error target on element';
     },
     bind: function(){
       $(document).on('ajax:success', this.selector, this.success);
