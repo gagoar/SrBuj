@@ -30,9 +30,8 @@
     },
     getVerb: function($el){
         var dataVerb = $el.data('method'),
-            replace = $el.data('replace'),
+            replace = $el.data('replace') || false,
             proto = $el.attr('method') || 'GET';
-
       if( dataVerb )
           return dataVerb.toUpperCase()
       else
@@ -42,17 +41,19 @@
       var $el = $(e.target),
           isModal = $el.data('modal') || false,
           method = $.SrBuj.getVerb($el),
-          change = $el.attr('nochange') && false || true,
+          change = ! ( $el.data('nochange') || false ),
           fn = $el.data('callback'),
+          custom = $el.data('custom') || false,
           callback = (typeof  fn == 'function') ? fn : window[fn],
           target = document.getElementById($el.data('target')),
           wrapper = document.getElementById($el.data('error')),
           $target = $(target);
 
-      if(change) $.SrBuj.changeDom(method,$target,data);
-      if(isModal) wrapper ? $(wrapper).modal('toggle') : $target.modal('toggle');
+      if( !custom ){
+        if(change) $.SrBuj.changeDom(method,$target,data);
+        if(isModal) wrapper ? $(wrapper).modal('toggle') : $target.modal('toggle');
+      }
       if(callback) callback.apply(this,[e, data]);
-
     },
     fail: function(e, data){
       var $el = $(e.target),
