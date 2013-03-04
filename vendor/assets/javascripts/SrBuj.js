@@ -28,19 +28,28 @@
       }
 
     },
+    getVerb: function($el){
+        var dataVerb = $el.data('method'),
+            replace = $el.data('replace'),
+            proto = $el.attr('method') || 'GET';
+
+      if( dataVerb )
+          return dataVerb.toUpperCase()
+      else
+        return ( replace && proto.toUpperCase() == 'POST' ) ? 'PUT' : proto.toUpperCase();
+    },
     success: function(e, data){
       var $el = $(e.target),
           isModal = $el.data('modal') || false,
-          verb = $el.attr('method') || 'GET',
-          method = ( verb.toUpperCase() == 'POST' && $el.data('replace')) ? 'PUT' : verb.toUpperCase();
-          change = $el.attr('nochange') || true,
+          method = $.SrBuj.getVerb($el),
+          change = $el.attr('nochange') && false || true,
           fn = $el.data('callback'),
           callback = (typeof  fn == 'function') ? fn : window[fn],
           target = document.getElementById($el.data('target')),
           wrapper = document.getElementById($el.data('error')),
           $target = $(target);
 
-      if(change) $.SrBuj.changeDom(method.toUpperCase(),$target,data);
+      if(change) $.SrBuj.changeDom(method,$target,data);
       if(isModal) wrapper ? $(wrapper).modal('toggle') : $target.modal('toggle');
       if(callback) callback.apply(this,[e, data]);
 
