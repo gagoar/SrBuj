@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-    
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -19,7 +16,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="header">Srbuj<span>.</span>js</h1>
+        <h1 class="header">Srbuj</h1>
         <p class="header">better unobtrusive javascript request for Rails and Jquery</p>
 
         <ul>
@@ -33,27 +30,49 @@
 
       </header>
       <section>
-        <h1>SrBuj<span>.</span>js</h1>
+        <h1>SrBuj</h1>
 
 <p>Better Unobtrusive JavaScript Request (for Rails and jquery_ujs, twitter/bootstrap modal.js)</p>
 
+<p>SrBuj comes to cure a common illness in a life of every Rails developer (maybe other kind too):</p>
+
 <ul>
-<li>Do you need render a partial in your web with out reload?, and make a modal out of it?(depends on twitter/Bootstrap modal.js)</li>
-<li>Do you need remove an element from a list?</li>
-<li>Do you need replace an element after update?</li>
-</ul><p>This unobtrusive scripting support file is developed for the Ruby on Rails framework, but is not strictly tied to any specific backend. You can drop this into any application to:</p>
+<li>write the same code to rise up a modal</li>
+<li>render a partial on it.</li>
+<li>change an element in a view without reload the entire web page</li>
+<li>replace content of an element (GET)</li>
+<li>add an element (POST)</li>
+<li>remove an element (DELETE)</li>
+<li>replace an specific element (PUT/PATCH)</li>
+<li>bind a callback to run specific js function.</li>
+</ul><p>every time, we end up with a lot of code, ugly code, messy code...</p>
+
+<p>And every time we end up doing an old and known .js.rb file, with the same 4 lines... Well enough it's enough!</p>
+
+<p>This is the cure...  and comes with a simple treatment too!
+Steps:</p>
+
+<ol>
+<li>Bundle the gem</li>
+<li>required in your manifest</li>
+<li>add the magic data attributes to the element</li>
+<li>Enjoy de js-less ! :-)</li>
+</ol><p>This unobtrusive scripting support file is developed for the Ruby on Rails framework, but is not strictly tied to any specific backend. You can drop this into any application to:</p>
 
 <ul>
 <li>get modals out of the box, via js</li>
 <li>make non-GET requests from hyperlinks</li>
-<li>make forms or hyperlinks submit data asynchronously with Ajax and handle the response in a dry way;</li>
+<li>make any submit data asynchronously with Ajax and handle the response in a dry way.</li>
 </ul><p>These features are achieved by adding certain ["data" attributes][data] to your HTML markup. In Rails, they are added by the framework's template helpers.</p>
 
 <h2>Requirements</h2>
 
 <ul>
-<li>[jQuery 1.7.x or higher][jquery];</li>
-<li>[twitter/bootstrap modal.js plugin]</li>
+<li>
+<a href="http://jquery.com/">jQuery 1.7.x or higher</a>;</li>
+<li><a href="https://github.com/rails/jquery-ujs">jquery_ujs</a></li>
+<li>
+<a href="http://twitter.github.com/bootstrap/javascript.html#modals">twitter/bootstrap modal.js plugin</a> or any .modal()/.modal('toggle') function attached to the jquery element.</li>
 <li>HTML5 doctype (optional).</li>
 </ul><p>If you don't use HTML5, adding "data" attributes to your HTML4 or XHTML pages might make them fail [W3C markup validation][validator]. However, this shouldn't create any issues for web browsers or other user agents.</p>
 
@@ -78,19 +97,27 @@
 <span class="c1">//= require SrBuj</span>
 </pre></div>
 
-<h2>Use</h2>
+<h2>Use and Options</h2>
 
-<p>data[target] = id Element in to render the response before success
-data[modal] = true|false if you wish that repsonse execute in modal (default false)
-data[error] = id Element In a form data[error] is the holder in witch de form re renders to show the errors
-data[replace] = true|false if you wish replace de data[target] element with the response content on success (default false)
-data[remote] &amp;&amp; data[target] = combined the success response execute a remove() over the target element</p>
+<ul>
+<li>target( data[target] ):  depending on the type of request(GET/PUT/POST/DELETE) is used to alter the Dom. it represent the element that we want to alter in the view after an succceded request (needed)</li>
+<li>modal( data[modal] ): if you wish that the response ends up in a modal. value: true|false (default false)</li>
+<li>error (data[error]): id Element In a form data[error] is the holder in witch de form re renders to show the errors</li>
+<li>replace(data[replace]):  if you wish to replace de data[target] element with the response content on success. represent the PUT/PATCH action for SrBuj. value: true|false (default false)</li>
+<li>remove (data[method:delete] &amp;&amp; data[target]): if these are combined the success response execute a remove() over the data[target] element.</li>
+<li>nochange (data[nochange]): do all but don't change the document in any way.</li>
+<li>callback(data[callback]) = after a successeded request, call this function.</li>
+<li>data[custom] = just proxy the response to my custom function in callback, nothing more.</li>
+<li>jqueryselector(data[jqueryselector]): Change the data[target] &amp; data[error] for selectors in jquery and find the element!</li>
+</ul><p>You can use it with any element available. (links forms tables divs anything).</p>
 
-<h2>Example</h2>
+<h1>Example</h1>
 
-<p>in your view (example with a link)</p>
+<h2>modal</h2>
 
-<div class="highlight"><pre> <span class="p">=</span> <span class="n">link_to</span> <span class="s1">'add Element'</span> <span class="n">elements_path</span><span class="p">,</span> <span class="n">remote</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="p">{</span><span class="n">target</span><span class="p">:</span> <span class="s1">'partial-id'</span><span class="p">,</span> <span class="n">modal</span><span class="p">:</span> <span class="kp">true</span><span class="p">}</span>
+<p>in your view (example with a link and haml)</p>
+
+<div class="highlight"><pre> <span class="p">=</span> <span class="n">link_to</span> <span class="s1">'add Element'</span> <span class="n">elements_path</span><span class="p">,</span> <span class="ss">remote</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="p">{</span><span class="ss">target</span><span class="p">:</span> <span class="s1">'partial-id'</span><span class="p">,</span> <span class="ss">modal</span><span class="p">:</span> <span class="kp">true</span><span class="p">}</span>
 
 
 <span class="nf">#partial-id</span>
@@ -101,13 +128,22 @@ data[remote] &amp;&amp; data[target] = combined the success response execute a r
 
 <div class="highlight"><pre>  <span class="k">def</span> <span class="nf">new</span>
     <span class="vi">@element</span><span class="o">=</span> <span class="no">Element</span><span class="o">.</span><span class="n">new</span>
-    <span class="n">render</span> <span class="n">partial</span><span class="p">:</span> <span class="s1">'new'</span><span class="p">,</span> <span class="n">content_type</span><span class="p">:</span> <span class="s1">'text/html'</span>
+    <span class="n">render</span> <span class="ss">partial</span><span class="p">:</span> <span class="s1">'new'</span><span class="p">,</span> <span class="n">content_type</span><span class="p">:</span> <span class="s1">'text/html'</span> <span class="c1">#=&gt; the content_type stands for telling the js request that everything ends up</span>
+<span class="n">fine</span><span class="o">.</span>
   <span class="k">end</span>
 </pre></div>
 
 <p>that's it.</p>
 
-<h2>Copyright</h2>
+<h2>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol><h2>Copyright</h2>
 
 <p>Copyright (c) 2013 gagoar. See LICENSE.txt for
 further details.</p>
