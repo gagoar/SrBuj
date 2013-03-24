@@ -13,22 +13,15 @@ SrBuj comes to cure a common illness in a life of every Rails developer (maybe o
   - replace an specific element (PUT/PATCH)
   - bind a callback to run specific js function.
 
-every time, we end up with a lot of code, ugly code, messy code...
-
-And every time we end up doing an old and known .js.rb file, with the same 4 lines... Well enough it's enough!
-
-This is the cure...  and comes with a simple treatment too!
+every time, we end up with a lot of code, ugly code, messy code or at best with an old and known .js.rb file with the same 4 lines... Well enough it's enough!
+This is the cure...and comes with a simple treatment too!
 Steps:
  1. Bundle the gem
  2. required in your manifest
- 3. add the magic data attributes to the element
- 4. Enjoy de js-less ! :-)
+ 3. add the 'magic data attributes' to the element
+ 4. Enjoy the js-less ! :-)
 
-This unobtrusive scripting support file is developed for the Ruby on Rails framework, but is not strictly tied to any specific backend. You can drop this into any application to:
-
-- get modals out of the box, via js
-- make non-GET requests from hyperlinks
-- make any submit data asynchronously with Ajax and handle the response in a dry way.
+This unobtrusive scripting support file is developed for the Ruby on Rails framework, but is not strictly tied to any specific backend. You can drop this into any application.
 
 These features are achieved by adding certain ["data" attributes][data] to your HTML markup. In Rails, they are added by the framework's template helpers.
 
@@ -87,7 +80,7 @@ modal
 in your view (example with a link and haml)
 
 ````haml
- = link_to 'add Element' elements_path, remote: true, data: {target: 'partial-id', modal: true}
+ = link_to 'add Element', elements_path, remote: true, data: {target: 'partial-id', modal: true}
 
 
 #partial-id
