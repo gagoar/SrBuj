@@ -17,6 +17,8 @@ every time, we end up with a lot of code, ugly code, messy code or at best with 
 This is the cure...and comes with a simple treatment too!
 
 Steps:
+-
+
 1. bundle the gem
 2. required in your manifest
 3. add the 'magic data attributes' to the element
