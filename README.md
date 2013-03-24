@@ -15,11 +15,12 @@ SrBuj comes to cure a common illness in a life of every Rails developer (maybe o
 
 every time, we end up with a lot of code, ugly code, messy code or at best with an old and known .js.rb file with the same 4 lines... Well enough it's enough!
 This is the cure...and comes with a simple treatment too!
+
 Steps:
- 1. Bundle the gem
- 2. required in your manifest
- 3. add the 'magic data attributes' to the element
- 4. Enjoy the js-less ! :-)
+1. bundle the gem
+2. required in your manifest
+3. add the 'magic data attributes' to the element
+4. enjoy the js-less ! :-)
 
 This unobtrusive scripting support file is developed for the Ruby on Rails framework, but is not strictly tied to any specific backend. You can drop this into any application.
 
