@@ -72,7 +72,7 @@ Use and Options
   - callback(data[callback]) = after a successeded request, call this function.
   - data[custom] = just proxy the response to my custom function in callback, nothing more.
   - jqueryselector(data[jqueryselector]): Change the data[target] & data[error] for selectors in jquery and find the element!
-
+  - respond-as(data[respond-as]): We can alter the respond behavior without careing the method used on the request. values: GET/POST/PUT/PATCH/DELETE
 You can use it with any element available. (links forms tables divs anything).
 
 Example
