@@ -1,7 +1,7 @@
 SrBuj
 =
 
-Better Unobtrusive JavaScript Request (for Rails and jquery_ujs, twitter/bootstrap modal.js)
+Better Unobtrusive JavaScript Respond (for Rails and jquery_ujs, twitter/bootstrap modal.js)
 
 SrBuj comes to cure a common illness in a life of every Rails developer (maybe other kind too):
   - write the same code to rise up a modal
