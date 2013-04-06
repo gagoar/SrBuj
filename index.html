@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -19,8 +16,8 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="header">Srbuj<span>.</span>js</h1>
-        <p class="header">better unobtrusive javascript request for Rails and Jquery</p>
+        <h1 class="header">Srbuj</h1>
+        <p class="header">better unobtrusive javascript respond for Rails and Jquery</p>
 
         <ul>
           <li class="download"><a class="buttons" href="https://github.com/gagoar/SrBuj/zipball/master">Download ZIP</a></li>
@@ -33,9 +30,9 @@
 
       </header>
       <section>
-        <h1>SrBuj<span>.</span>js</h1>
+        <h1>SrBuj</h1>
 
-<p>Better Unobtrusive JavaScript Request (for Rails and jquery_ujs, twitter/bootstrap modal.js)</p>
+<p>Better Unobtrusive JavaScript Respond (for Rails and jquery_ujs, twitter/bootstrap modal.js)</p>
 
 <p>SrBuj comes to cure a common illness in a life of every Rails developer (maybe other kind too):</p>
 
@@ -106,9 +103,9 @@ This is the cure...and comes with a simple treatment too!</p>
 <li>callback(data[callback]) = after a successeded request, call this function.</li>
 <li>data[custom] = just proxy the response to my custom function in callback, nothing more.</li>
 <li>jqueryselector(data[jqueryselector]): Change the data[target] &amp; data[error] for selectors in jquery and find the element!</li>
-</ul><p>You can use it with any element available. (links forms tables divs anything).</p>
-
-<h1>Example</h1>
+<li>respond-as(data[respond-as]): We can alter the respond behavior without careing the method used on the request. values: GET/POST/PUT/PATCH/DELETE
+You can use it with any element available. (links forms tables divs anything).</li>
+</ul><h1>Example</h1>
 
 <h2>modal</h2>
 
