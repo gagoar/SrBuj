@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = SrBuj::VERSION
   spec.authors       = ["gagoar"]
   spec.email         = ["xeroice@gmail.com"]
-  spec.description   = %q{Better Unobtrusive JavaScript Request in asset pipeline}
+  spec.description   = %q{Better Unobtrusive JavaScript Respond}
   spec.summary       = %q{http://github.com/gagoar/SrBuj/}
   spec.homepage      = "http://gagoar.github.com/SrBuj/"
   spec.license       = "MIT"
