@@ -1,3 +1,3 @@
 module SrBuj
-  VERSION = '0.8.1'
+  VERSION = '0.8.3'
 end
