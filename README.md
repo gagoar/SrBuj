@@ -1,7 +1,7 @@
 SrBuj
 =
  
-[![Dependency Status](https://gemnasium.com/gagoar/SrBuj.png)](https://gemnasium.com/gagoar/SrBuj) [![Code Climate](https://codeclimate.com/github/gagoar/SrBuj.png)](https://codeclimate.com/github/gagoar/SrBuj.png)
+[![Gem Version](https://badge.fury.io/rb/SrBuj.png)](https://rubygems.org/gems/SrBuj)[![Dependency Status](https://gemnasium.com/gagoar/SrBuj.png)](https://gemnasium.com/gagoar/SrBuj) [![Code Climate](https://codeclimate.com/github/gagoar/SrBuj.png)](https://codeclimate.com/github/gagoar/SrBuj.png)
 
 Better Unobtrusive JavaScript Respond (for Rails and jquery_ujs, twitter/bootstrap modal.js)
 
