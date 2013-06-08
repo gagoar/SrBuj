@@ -1,0 +1,30 @@
+#_growlingMsg.top{
+  top: 10px;
+}
+#_growlingMsg.left{
+  left: 10px;
+}
+#_growlingMsg.right{
+  right: 10px;
+}
+#_growlingMsg.bottom{
+  bottom: 10px;
+}
+
+s#_growlingMsg{
+  -webkit-transition:all 0.5s ease-in-out;
+  -ms-transition:all 0.5s ease-in-out;
+  -o-transition:all 0.5s ease-in-out;
+  -moz-transition:all 0.5s ease-in-out;
+  transition:all 0.5s ease-in-out;
+  opacity: 0;
+  display: block;
+  position: fixed;
+  margin: 0;
+  z-index: 1000;
+  text-decoration: none;
+}
+s#_growlingMsg.srbuj-notify{
+  opacity: 1;
+}
+
