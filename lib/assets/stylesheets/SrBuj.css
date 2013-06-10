@@ -21,7 +21,7 @@ s#_growlingMsg{
   display: block;
   position: fixed;
   margin: 0;
-  z-index: 1000;
+  z-index: 10000;
   text-decoration: none;
 }
 s#_growlingMsg.srbuj-notify{
