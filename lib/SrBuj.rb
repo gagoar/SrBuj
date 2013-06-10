@@ -1,4 +1,4 @@
-equire 'SrBuj/version'
+require 'SrBuj/version'
 require 'active_support'
 
 module SrBuj
