@@ -1,3 +1,3 @@
 module SrBuj
-  VERSION = '0.9.0alpha5'
+  VERSION = '0.9.0'
 end
