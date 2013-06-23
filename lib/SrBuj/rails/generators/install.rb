@@ -1,23 +1,28 @@
 module SrBuj
   module Generators
     class Install < Rails::Generators::Base
+       desc "This generator installs SrBuj #{SrBuj::VERSION} in your manifests (js/css)"
 
       def add_assets
-        insert_into_file "app/assets/javascripts/application#{detect_js_format[0]}", "#{detect_js_format[1]} require SrBuj\n", after: "jquery_ujs\n"
-        insert_into_file "app/assets/stylesheets/application#{detect_css_format[0]}", "#{detect_css_format[1]} require SrBuj\n", after: "require_self\n"
+        [ detect_js_format, detect_css_format ].each do |format, prepend, type|
+          say_status("inserting", "SrBuj (#{SrBuj::VERSION}) in your application#{format}", :green)
+          insert_into_file "app/assets/#{type}/application#{format}", "#{prepend} require SrBuj\n", after: "jquery_ujs\n"
+        end
       end
 
       def detect_js_format
-        return ['.js.coffee', '#='] if File.exist?('app/assets/javascripts/application.js.coffee')
-        return ['.js', '//='] if File.exist?('app/assets/javascripts/application.js')
+        [['.js.coffee', '#='], ['.js', '//=']].each do  |format, prepend|
+          return [format, prepend, 'javascripts'] if File.exist?("app/assets/javascripts/application#{format}")
+        end
       end
 
       def detect_css_format
-        return ['.css', ' *='] if File.exist?('app/assets/stylesheets/application.css')
-        return ['.css.sass', ' //='] if File.exist?('app/assets/stylesheets/application.css.sass')
-        return ['.sass', ' //='] if File.exist?('app/assets/stylesheets/application.sass')
-        return ['.css.scss', ' //='] if File.exist?('app/assets/stylesheets/application.css.scss')
-        return ['.scss', ' //='] if File.exist?('app/assets/stylesheets/application.scss')
+        return ['.css', ' *=', 'stylesheets'] if File.exist?('app/assets/stylesheets/application.css')
+
+        ['.sass', '.scss'].each do |format|
+         return [ format, '//=', 'stylesheets' ] if File.exist?("app/assets/stylesheets/application#{format}")
+         return [ ".css#{format}", '//=', 'stylesheets' ] if File.exist?("app/assets/stylesheets/application.css#{format}")
+        end
       end
     end
   end
