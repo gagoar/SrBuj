@@ -1,3 +1,5 @@
+require 'rails/generators'
+
 module SrBuj
   module Generators
     class Install < Rails::Generators::Base
