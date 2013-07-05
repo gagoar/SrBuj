@@ -56,7 +56,7 @@ And run:
 
 use the generator:
 
-    $ bundle exec rails generator sr_buj:Install
+    $ bundle exec rails g sr_buj:Install
 
 
 or the manual way:
@@ -100,7 +100,7 @@ Use and Options
 
   - `data-respond-as`: We can alter the respond behavior without careing the method used on the request. values: `GET`/`POST`/`PUT`/`PATCH`/`DELETE`
 
-  - `data-push`: if there is a href or action in the element, replace the url.
+  - `data-push`: if there is a href or action in the element, replace the urlt p.
 
 You can use it with any html element available. (links forms tables divs...Anything).
 
