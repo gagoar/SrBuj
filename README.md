@@ -31,6 +31,7 @@ This unobtrusive scripting support file is developed for the Ruby on Rails frame
 
 These features are achieved by adding certain ["data" attributes][data] to your HTML markup. In Rails, they are added by the framework's template helpers.
 
+
 Requirements
 =
 
@@ -56,7 +57,7 @@ And run:
 
 use the generator:
 
-    $ bundle exec rails g sr_buj:Install
+    $ bundle exec rails g sr_buj:install
 
 
 or the manual way:
@@ -100,7 +101,7 @@ Use and Options
 
   - `data-respond-as`: We can alter the respond behavior without careing the method used on the request. values: `GET`/`POST`/`PUT`/`PATCH`/`DELETE`
 
-  - `data-push`: if there is a href or action in the element, replace the urlt p.
+  - `data-push`: if there is a href or action in the element, replace the url.(default: false)
 
 You can use it with any html element available. (links forms tables divs...Anything).
 
