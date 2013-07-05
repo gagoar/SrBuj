@@ -54,9 +54,14 @@ And run:
 
     $ bundle install
 
-This next step depends on your version of Rails.
+use the generator:
 
-For Rails 3.1 and higher, add these lines to the top of your `app/assets/javascripts/application.js` file:
+    $ bundle exec rails generator sr_buj:Install
+
+
+or the manual way:
+
+For Rails 3.1 and higher, add `//= require SrBuj` in your `app/assets/javascripts/application.js` file like this:
 
 ```javascript
 //= require jquery
@@ -64,31 +69,25 @@ For Rails 3.1 and higher, add these lines to the top of your `app/assets/javascr
 //= require SrBuj
 ```
 
-and in your `app/assets/stylesheets/application.css` file:
+and add `*= require SrBuj` in your `app/assets/stylesheets/application.css` file:
 
 ```css
  *= require_self
  *= require SrBuj
  *= require_tree .
  */
-
 ```
-
-or use the generator:
-
-    $ bundle exec rails generator sr_buj:Install
 
 Use and Options
 =
 
-  - `data-target`:  depending on the type of request(GET/PUT/POST/DELETE) is used to alter the Dom. it represent the element that we want to alter in the view after an succceded request (needed)
-  - `data-modal`: if you wish that the response ends up in a modal. value: true|false (default: false)
-  - `data-error`: id Element In a form `data-error` is the holder in witch de form re renders to show the errors
-  - `data-replace`:  if you wish to replace de `data-target` element with the response content on success. represent the `PUT`/`PATCH` actions for SrBuj. value: true|false (default: false)
-  - `data-delete`: if these are combined the success response execute a remove() on the `data-target` element.
-  - `data-nochange`: do all but don't change the document in any way.
-  - `data-callback`: after a successeded request, call this function.
-  - `data-custom`: just proxy the response to my custom function in callback, nothing more.
+  - `data-target`: Depending on the type of request(`GET`/`PUT`/`POST`/`DELETE`) is used to alter the Dom. it represent the element that we want to alter in the view after an succceded request (needed)
+  - `data-modal`: If you wish that the response ends up in a modal. value: true|false (default: false)
+  - `data-error`: The id element where errors will be rendered if the response received a different state than 200(Ok)
+  - `data-delete`: On a successded response, remove the 'data-target' element from document.
+  - `data-nochange`: Don't alter the Document.(ignore the verb)
+  - `data-callback`: After a succeeded response, call this function.
+  - `data-custom`: Just proxy the response to `data-callback` function. (default: false)
   - `data-jqueryselector`: Change the `data-target` & `data-error` for selectors in jquery and find the element!
   - `data-respond-as`: We can alter the respond behavior without careing the method used on the request. values: `GET`/`POST`/`PUT`/`PATCH`/`DELETE`
 
