@@ -1,11 +1,12 @@
 SrBuj
 =
- 
-[![Gem Version](https://badge.fury.io/rb/SrBuj.png)](https://rubygems.org/gems/SrBuj)[![Dependency Status](https://gemnasium.com/gagoar/SrBuj.png)](https://gemnasium.com/gagoar/SrBuj) [![Code Climate](https://codeclimate.com/github/gagoar/SrBuj.png)](https://codeclimate.com/github/gagoar/SrBuj.png)
+
+[![Gem Version](https://badge.fury.io/rb/SrBuj.png)](https://rubygems.org/gems/SrBuj)[![Dependency Status](https://gemnasium.com/gagoar/SrBuj.png)](https://gemnasium.com/gagoar/SrBuj) [![Code Climate](https://codeclimate.com/github/gagoar/SrBuj.png)](https://codeclimate.com/github/gagoar/SrBuj)
 
 Better Unobtrusive JavaScript Respond (for Rails and jquery_ujs, twitter/bootstrap modal.js)
 
 SrBuj comes to cure a common illness in a life of every Rails developer (maybe other kind too):
+
   - write the same code to rise up a modal
   - render a partial on it.
   - change an element in a view without reload the entire web page
@@ -15,11 +16,11 @@ SrBuj comes to cure a common illness in a life of every Rails developer (maybe o
   - replace an specific element (PUT/PATCH)
   - bind a callback to run specific js function.
 
-every time, we end up with a lot of code, ugly code, messy code or at best with an old and known .js.rb file with the same 4 lines... Well enough it's enough!
+Every time, we end up with a lot of code, ugly code, messy code or at best with an old and known .js.rb file with the same 4 lines... Well enough it's enough!
 This is the cure...and comes with a simple treatment too!
 
 Steps:
--
+=
 
 1. bundle the gem
 2. required in your manifest
@@ -31,7 +32,7 @@ This unobtrusive scripting support file is developed for the Ruby on Rails frame
 These features are achieved by adding certain ["data" attributes][data] to your HTML markup. In Rails, they are added by the framework's template helpers.
 
 Requirements
-------------
+=
 
 - [jQuery 1.7.x or higher](http://jquery.com/);
 - [jquery_ujs](https://github.com/rails/jquery-ujs)
@@ -41,7 +42,7 @@ Requirements
 If you don't use HTML5, adding "data" attributes to your HTML4 or XHTML pages might make them fail [W3C markup validation][validator]. However, this shouldn't create any issues for web browsers or other user agents.
 
 Installation
-------------
+=
 
 For automated installation in Rails, use the "jquery-rails" gem. Place this in your Gemfile:
 
@@ -55,7 +56,7 @@ And run:
 
 This next step depends on your version of Rails.
 
-a. For Rails 3.1, add these lines to the top of your app/assets/javascripts/application.js file:
+For Rails 3.1 and higher, add these lines to the top of your `app/assets/javascripts/application.js` file:
 
 ```javascript
 //= require jquery
@@ -63,22 +64,38 @@ a. For Rails 3.1, add these lines to the top of your app/assets/javascripts/appl
 //= require SrBuj
 ```
 
+and in your `app/assets/stylesheets/application.css` file:
+
+```css
+ *= require_self
+ *= require SrBuj
+ *= require_tree .
+ */
+
+```
+
+or use the generator:
+
+    $ bundle exec rails generator sr_buj:Install
+
 Use and Options
----
-  - target( data[target] ):  depending on the type of request(GET/PUT/POST/DELETE) is used to alter the Dom. it represent the element that we want to alter in the view after an succceded request (needed)
-  - modal( data[modal] ): if you wish that the response ends up in a modal. value: true|false (default false)
-  - error (data[error]): id Element In a form data[error] is the holder in witch de form re renders to show the errors
-  - replace(data[replace]):  if you wish to replace de data[target] element with the response content on success. represent the PUT/PATCH action for SrBuj. value: true|false (default false)
-  - remove (data[method:delete] && data[target]): if these are combined the success response execute a remove() over the data[target] element.
-  - nochange (data[nochange]): do all but don't change the document in any way.
-  - callback(data[callback]) = after a successeded request, call this function.
-  - data[custom] = just proxy the response to my custom function in callback, nothing more.
-  - jqueryselector(data[jqueryselector]): Change the data[target] & data[error] for selectors in jquery and find the element!
-  - respond-as(data[respond-as]): We can alter the respond behavior without careing the method used on the request. values: GET/POST/PUT/PATCH/DELETE
-You can use it with any element available. (links forms tables divs anything).
+=
+
+  - `data-target`:  depending on the type of request(GET/PUT/POST/DELETE) is used to alter the Dom. it represent the element that we want to alter in the view after an succceded request (needed)
+  - `data-modal`: if you wish that the response ends up in a modal. value: true|false (default: false)
+  - `data-error`: id Element In a form `data-error` is the holder in witch de form re renders to show the errors
+  - `data-replace`:  if you wish to replace de `data-target` element with the response content on success. represent the `PUT`/`PATCH` actions for SrBuj. value: true|false (default: false)
+  - `data-delete`: if these are combined the success response execute a remove() on the `data-target` element.
+  - `data-nochange`: do all but don't change the document in any way.
+  - `data-callback`: after a successeded request, call this function.
+  - `data-custom`: just proxy the response to my custom function in callback, nothing more.
+  - `data-jqueryselector`: Change the `data-target` & `data-error` for selectors in jquery and find the element!
+  - `data-respond-as`: We can alter the respond behavior without careing the method used on the request. values: `GET`/`POST`/`PUT`/`PATCH`/`DELETE`
+
+You can use it with any html element available. (links forms tables divs...Anything).
 
 Example
-=======
+=
 
 modal
 ----
@@ -105,7 +122,7 @@ fine.
 that's it.
 
 Contributing
-------------
+=
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -114,7 +131,7 @@ Contributing
 5. Create new Pull Request
 
 Copyright
----------
+=
 
 Copyright (c) 2013 gagoar. See LICENSE.txt for
 further details.
