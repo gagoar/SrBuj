@@ -72,6 +72,7 @@ For Rails 3.1 and higher, add `//= require SrBuj` in your `app/assets/javascript
 and add `*= require SrBuj` in your `app/assets/stylesheets/application.css` file:
 
 ```css
+ /*
  *= require_self
  *= require SrBuj
  *= require_tree .
@@ -82,14 +83,24 @@ Use and Options
 =
 
   - `data-target`: Depending on the type of request(`GET`/`PUT`/`POST`/`DELETE`) is used to alter the Dom. it represent the element that we want to alter in the view after an succceded request (needed)
-  - `data-modal`: If you wish that the response ends up in a modal. value: true|false (default: false)
-  - `data-error`: The id element where errors will be rendered if the response received a different state than 200(Ok)
+
+  - `data-modal`: If you wish that the response ends up in a modal (default: false).
+
+  - `data-error`: The id element where errors will be rendered if the response received a different state than 200(Ok).
+
   - `data-delete`: On a successded response, remove the 'data-target' element from document.
-  - `data-nochange`: Don't alter the Document.(ignore the verb)
+
+  - `data-nochange`: Don't alter the Document.(ignore the verb).
+
   - `data-callback`: After a succeeded response, call this function.
-  - `data-custom`: Just proxy the response to `data-callback` function. (default: false)
+
+  - `data-custom`: Just proxy the response to `data-callback` function. (default: false).
+
   - `data-jqueryselector`: Change the `data-target` & `data-error` for selectors in jquery and find the element!
+
   - `data-respond-as`: We can alter the respond behavior without careing the method used on the request. values: `GET`/`POST`/`PUT`/`PATCH`/`DELETE`
+
+  - `data-push`: if there is a href or action in the element, replace the url.
 
 You can use it with any html element available. (links forms tables divs...Anything).
 
