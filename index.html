@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -17,7 +16,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="header">Srbuj<span>.</span>js</h1>
+        <h1 class="header">Srbuj</h1>
         <p class="header">better unobtrusive javascript respond for Rails and Jquery</p>
 
         <ul>
@@ -31,7 +30,10 @@
 
       </header>
       <section>
-        <h1>Srbuj<span>.</span>js</h1>
+        <h1>
+<a name="srbuj" class="anchor" href="#srbuj"><span class="octicon octicon-link"></span></a>SrBuj</h1>
+
+<p><a href="https://rubygems.org/gems/SrBuj"><img src="https://badge.fury.io/rb/SrBuj.png" alt="Gem Version"></a><a href="https://gemnasium.com/gagoar/SrBuj"><img src="https://gemnasium.com/gagoar/SrBuj.png" alt="Dependency Status"></a> <a href="https://codeclimate.com/github/gagoar/SrBuj"><img src="https://codeclimate.com/github/gagoar/SrBuj.png" alt="Code Climate"></a></p>
 
 <p>Better Unobtrusive JavaScript Respond (for Rails and jquery_ujs, twitter/bootstrap modal.js)</p>
 
@@ -46,10 +48,11 @@
 <li>remove an element (DELETE)</li>
 <li>replace an specific element (PUT/PATCH)</li>
 <li>bind a callback to run specific js function.</li>
-</ul><p>every time, we end up with a lot of code, ugly code, messy code or at best with an old and known .js.rb file with the same 4 lines... Well enough it's enough!
+</ul><p>Every time, we end up with a lot of code, ugly code, messy code or at best with an old and known .js.rb file with the same 4 lines... Well enough it's enough!
 This is the cure...and comes with a simple treatment too!</p>
 
-<h2>Steps:</h2>
+<h1>
+<a name="steps" class="anchor" href="#steps"><span class="octicon octicon-link"></span></a>Steps:</h1>
 
 <ol>
 <li>bundle the gem</li>
@@ -60,7 +63,8 @@ This is the cure...and comes with a simple treatment too!</p>
 
 <p>These features are achieved by adding certain ["data" attributes][data] to your HTML markup. In Rails, they are added by the framework's template helpers.</p>
 
-<h2>Requirements</h2>
+<h1>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h1>
 
 <ul>
 <li>
@@ -71,7 +75,8 @@ This is the cure...and comes with a simple treatment too!</p>
 <li>HTML5 doctype (optional).</li>
 </ul><p>If you don't use HTML5, adding "data" attributes to your HTML4 or XHTML pages might make them fail [W3C markup validation][validator]. However, this shouldn't create any issues for web browsers or other user agents.</p>
 
-<h2>Installation</h2>
+<h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
 
 <p>For automated installation in Rails, use the "jquery-rails" gem. Place this in your Gemfile:</p>
 
@@ -83,32 +88,50 @@ This is the cure...and comes with a simple treatment too!</p>
 <pre><code>$ bundle install
 </code></pre>
 
-<p>This next step depends on your version of Rails.</p>
+<p>use the generator:</p>
 
-<p>a. For Rails 3.1, add these lines to the top of your app/assets/javascripts/application.js file:</p>
+<pre><code>$ bundle exec rails g sr_buj:install
+</code></pre>
+
+<p>or the manual way:</p>
+
+<p>For Rails 3.1 and higher, add <code>//= require SrBuj</code> in your <code>app/assets/javascripts/application.js</code> file like this:</p>
 
 <div class="highlight"><pre><span class="c1">//= require jquery</span>
 <span class="c1">//= require jquery_ujs</span>
 <span class="c1">//= require SrBuj</span>
 </pre></div>
 
-<h2>Use and Options</h2>
+<p>and add <code>*= require SrBuj</code> in your <code>app/assets/stylesheets/application.css</code> file:</p>
+
+<div class="highlight"><pre> <span class="c">/*</span>
+<span class="c"> *= require_self</span>
+<span class="c"> *= require SrBuj</span>
+<span class="c"> *= require_tree .</span>
+<span class="c"> */</span>
+</pre></div>
+
+<h1>
+<a name="use-and-options" class="anchor" href="#use-and-options"><span class="octicon octicon-link"></span></a>Use and Options</h1>
 
 <ul>
-<li>target( data[target] ):  depending on the type of request(GET/PUT/POST/DELETE) is used to alter the Dom. it represent the element that we want to alter in the view after an succceded request (needed)</li>
-<li>modal( data[modal] ): if you wish that the response ends up in a modal. value: true|false (default false)</li>
-<li>error (data[error]): id Element In a form data[error] is the holder in witch de form re renders to show the errors</li>
-<li>replace(data[replace]):  if you wish to replace de data[target] element with the response content on success. represent the PUT/PATCH action for SrBuj. value: true|false (default false)</li>
-<li>remove (data[method:delete] &amp;&amp; data[target]): if these are combined the success response execute a remove() over the data[target] element.</li>
-<li>nochange (data[nochange]): do all but don't change the document in any way.</li>
-<li>callback(data[callback]) = after a successeded request, call this function.</li>
-<li>data[custom] = just proxy the response to my custom function in callback, nothing more.</li>
-<li>jqueryselector(data[jqueryselector]): Change the data[target] &amp; data[error] for selectors in jquery and find the element!</li>
-<li>respond-as(data[respond-as]): We can alter the respond behavior without careing the method used on the request. values: GET/POST/PUT/PATCH/DELETE
-You can use it with any element available. (links forms tables divs anything).</li>
-</ul><h1>Example</h1>
+<li><p><code>data-target</code>: Depending on the type of request(<code>GET</code>/<code>PUT</code>/<code>POST</code>/<code>DELETE</code>) is used to alter the Dom. it represent the element that we want to alter in the view after an succceded request (needed)</p></li>
+<li><p><code>data-modal</code>: If you wish that the response ends up in a modal (default: false).</p></li>
+<li><p><code>data-error</code>: The id element where errors will be rendered if the response received a different state than 200(Ok).</p></li>
+<li><p><code>data-delete</code>: On a successded response, remove the 'data-target' element from document.</p></li>
+<li><p><code>data-nochange</code>: Don't alter the Document.(ignore the verb).</p></li>
+<li><p><code>data-callback</code>: After a succeeded response, call this function.</p></li>
+<li><p><code>data-custom</code>: Just proxy the response to <code>data-callback</code> function. (default: false).</p></li>
+<li><p><code>data-jqueryselector</code>: Change the <code>data-target</code> &amp; <code>data-error</code> for selectors in jquery and find the element!</p></li>
+<li><p><code>data-respond-as</code>: We can alter the respond behavior without careing the method used on the request. values: <code>GET</code>/<code>POST</code>/<code>PUT</code>/<code>PATCH</code>/<code>DELETE</code></p></li>
+<li><p><code>data-push</code>: if there is a href or action in the element, replace the url.(default: false)</p></li>
+</ul><p>You can use it with any html element available. (links forms tables divs...Anything).</p>
 
-<h2>modal</h2>
+<h1>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h1>
+
+<h2>
+<a name="modal" class="anchor" href="#modal"><span class="octicon octicon-link"></span></a>modal</h2>
 
 <p>in your view (example with a link and haml)</p>
 
@@ -130,7 +153,8 @@ You can use it with any element available. (links forms tables divs anything).</
 
 <p>that's it.</p>
 
-<h2>Contributing</h2>
+<h1>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h1>
 
 <ol>
 <li>Fork it</li>
@@ -138,7 +162,8 @@ You can use it with any element available. (links forms tables divs anything).</
 <li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
 <li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
 <li>Create new Pull Request</li>
-</ol><h2>Copyright</h2>
+</ol><h1>
+<a name="copyright" class="anchor" href="#copyright"><span class="octicon octicon-link"></span></a>Copyright</h1>
 
 <p>Copyright (c) 2013 gagoar. See LICENSE.txt for
 further details.</p>
