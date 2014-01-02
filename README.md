@@ -1,7 +1,7 @@
 SrBuj
 =
 
-[![Gem Version](https://badge.fury.io/rb/SrBuj.png)](https://rubygems.org/gems/SrBuj)[![Dependency Status](https://gemnasium.com/gagoar/SrBuj.png)](https://gemnasium.com/gagoar/SrBuj) [![Code Climate](https://codeclimate.com/github/gagoar/SrBuj.png)](https://codeclimate.com/github/gagoar/SrBuj)[![endorse](https://api.coderwall.com/gagoar/endorsecount.png)](https://coderwall.com/gagoar)
+[![Gem Version](https://badge.fury.io/rb/SrBuj.png)](https://rubygems.org/gems/SrBuj)[![Dependency Status](https://gemnasium.com/gagoar/SrBuj.png)](https://gemnasium.com/gagoar/SrBuj) [![Code Climate](https://codeclimate.com/github/gagoar/SrBuj.png)](https://codeclimate.com/github/gagoar/SrBuj)[![Travis-CI](https://travis-ci.org/gagoar/SrBuj.png)][![endorse](https://api.coderwall.com/gagoar/endorsecount.png)](https://coderwall.com/gagoar)
 
 Better Unobtrusive JavaScript Respond (for Rails and jquery_ujs, twitter/bootstrap modal.js)
 
@@ -131,6 +131,26 @@ fine.
 ````
 
 that's it.
+
+Testing
+=
+
+You need [Node](http://nodejs.org) and [Testem](https://github.com/airportyh/testem) to run the tests.
+
+1. Install
+
+````
+  npm install testem -g
+````
+
+2. Run
+
+````bash
+  testem ci # For test with all launchers
+  ####  or  ####
+  testem # and enter in http://localhost:7357
+````
+
 
 Contributing
 =
