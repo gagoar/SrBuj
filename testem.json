@@ -1,0 +1,8 @@
+{
+  "src_files": [
+    "test/*.js",
+    "http://code.jquery.com/jquery-1.10.2.min.js",
+    "https://rawgithub.com/rails/jquery-ujs/master/src/rails.js",
+    "lib/assets/javascripts/*.js"
+  ]
+}
