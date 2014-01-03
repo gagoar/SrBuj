@@ -167,3 +167,7 @@ Copyright
 Copyright (c) 2013 gagoar. See LICENSE.txt for
 further details.
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/gagoar/srbuj/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
