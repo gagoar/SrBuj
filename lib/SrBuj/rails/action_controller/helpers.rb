@@ -6,7 +6,8 @@ module SrBuj
         type: 'X-SRBUJ-TYPE',
         side: 'X-SRBUJ-SIDE',
         position: 'X-SRBUJ-POS',
-        time: 'X-SRBUJ-TIME'
+        time: 'X-SRBUJ-TIME',
+        raw: 'X-SRBUJ-RAW'
       }
       #=> helpfull method to return redirect_to in an js way.
       # use: js_redirect(to: root_path)
