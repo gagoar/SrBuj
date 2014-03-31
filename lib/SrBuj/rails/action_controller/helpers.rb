@@ -1,12 +1,13 @@
 module SrBuj
   module ActionController
     module Helpers
-      HEADERS = { message: 'X-SRBUJ-MSG',
-                  type: 'X-SRBUJ-TYPE',
-                  side: 'X-SRBUJ-SIDE',
-                  position: 'X-SRBUJ-POS',
-                  time: 'X-SRBUJ-TIME'
-                }
+      HEADERS = {
+        message: 'X-SRBUJ-MSG',
+        type: 'X-SRBUJ-TYPE',
+        side: 'X-SRBUJ-SIDE',
+        position: 'X-SRBUJ-POS',
+        time: 'X-SRBUJ-TIME'
+      }
       #=> helpfull method to return redirect_to in an js way.
       # use: js_redirect(to: root_path)
       # use: js_redirect(reload: true)
@@ -32,6 +33,8 @@ module SrBuj
           HEADERS.each do |value, header|
             response.headers[header] = options[value].to_s if options[value]
           end
+        else
+          response.headers['X-SRBUJ-REMOVE'] = 'true'
         end
       end
     end
