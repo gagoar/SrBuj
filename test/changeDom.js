@@ -65,7 +65,7 @@ describe('SrBuj changeDom function', function(){
       $.SrBuj.Util.link({ href: '/', target: true, force_refresh: true })
     }
 
-    var links = document.querySelectorAll('[id=_srbujLink]')
+    var links = document.querySelectorAll('[id^=_srbujLink_]')
 
     expect(links.length).toEqual(2)
     expect(links[0].href).not.toEqual(links[1].href)
