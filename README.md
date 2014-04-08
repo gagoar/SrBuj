@@ -132,6 +132,30 @@ fine.
 
 that's it.
 
+Notifications
+----
+
+From javascript
+
+$.SrBuj.Util.notify({ message: 'This is madness!' })
+
+From your controller
+
+js_notify(message: 'This is madness!')
+
+Required options:
+
+:message
+
+Other options:
+
+|  Option  | Posible Values            | Default  |
+| -------- |:-------------------------:| :-------:|
+| type     | :info, :warning, :error   |  :info   |
+| side     | :left, :right             |  :right  |
+| position | :top, :bottom             |  :bottom |
+| time     | time in ms, -1            |  2000    |
+
 Testing
 =
 
