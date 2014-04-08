@@ -156,6 +156,28 @@ Other options:
 | position | :top, :bottom             |  :bottom |
 | time     | time in ms, -1            |  2000    |
 
+Link
+----
+Apends a anchor element to the body and triggers click action on it.
+
+From javascript
+
+$.SrBuj.Util.link({ message: 'This is madness!' })
+
+Required options:
+
+:href, :target
+
+Other options:
+
+|  Option       | Posible Values                     | Default  |
+| ------------- |:----------------------------------:| :-------:|
+| method        | :get, :post, :patch, :put, :delete |  :get    |
+| href          | url                                |  ----    |
+| target        | on succes target element id        |  ----    |
+| error         | on error target element id         |  ----    |
+| force_refresh | true, false                        |  false   |
+
 Testing
 =
 
