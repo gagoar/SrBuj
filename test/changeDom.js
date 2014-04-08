@@ -9,7 +9,7 @@ describe('SrBuj changeDom function', function(){
   })
 
   it('show version', function(){
-    expect($.SrBuj.version).toBe('0.9.2')
+    expect($.SrBuj.version).toBe('0.10.0')
   })
 
   it('delete target', function(){
