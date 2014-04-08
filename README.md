@@ -149,12 +149,12 @@ Required options:
 
 Other options:
 
-|  Option  | Posible Values            | Default  |
-| -------- |:-------------------------:| :-------:|
-| type     | :info, :warning, :error   |  :info   |
-| side     | :left, :right             |  :right  |
-| position | :top, :bottom             |  :bottom |
-| time     | time in ms, -1            |  2000    |
+|  Option  | Description                                  |  Posible Values            | Default  |
+| -------- |:--------------------------------------------:| :-------------------------:| :-------:|
+| type     | Alert css class                              |  :info, :warning, :error   |  :info   |
+| side     | Side of the screen to render the alert       |  :left, :right             |  :right  |
+| position | Position of the screen to render the alert   |  :top, :bottom             |  :bottom |
+| time     | Time the alert is on screen before disappear |  time in ms, -1            |  2000    |
 
 Link
 ----
@@ -170,13 +170,13 @@ Required options:
 
 Other options:
 
-|  Option       | Posible Values                     | Default  |
-| ------------- |:----------------------------------:| :-------:|
-| method        | :get, :post, :patch, :put, :delete |  :get    |
-| href          | url                                |  ----    |
-| target        | on succes target element id        |  ----    |
-| error         | on error target element id         |  ----    |
-| force_refresh | true, false                        |  false   |
+|  Option       | Description                                                 | Posible Values                     | Default  |
+| ------------- |:-----------------------------------------------------------:|:----------------------------------:| :-------:|
+| method        | Request method                                              | :get, :post, :patch, :put, :delete |  :get    |
+| href          | Anchor href url                                             | request url                        |  ----    |
+| target        | Target to render on success request response                | HTML element id                    |  ----    |
+| error         | Target to render on error request response                  | HTML element id                    |  ----    |
+| force_refresh | Adds a random key to href params to prevent browser's cache | true, false                        |  false   |
 
 Testing
 =
