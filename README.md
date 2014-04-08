@@ -132,6 +132,52 @@ fine.
 
 that's it.
 
+Notifications
+----
+
+From javascript
+
+$.SrBuj.Util.notify({ message: 'This is madness!' })
+
+From your controller
+
+js_notify(message: 'This is madness!')
+
+Required options:
+
+:message
+
+Other options:
+
+|  Option  | Description                                  |  Posible Values            | Default  |
+| -------- |:--------------------------------------------:| :-------------------------:| :-------:|
+| type     | Alert css class                              |  :info, :warning, :error   |  :info   |
+| side     | Side of the screen to render the alert       |  :left, :right             |  :right  |
+| position | Position of the screen to render the alert   |  :top, :bottom             |  :bottom |
+| time     | Time the alert is on screen before disappear |  time in ms, -1            |  2000    |
+
+Link
+----
+Apends a anchor element to the body and triggers click action on it.
+
+From javascript
+
+$.SrBuj.Util.link({ message: 'This is madness!' })
+
+Required options:
+
+:href, :target
+
+Other options:
+
+|  Option       | Description                                                 | Posible Values                     | Default  |
+| ------------- |:-----------------------------------------------------------:|:----------------------------------:| :-------:|
+| method        | Request method                                              | :get, :post, :patch, :put, :delete |  :get    |
+| href          | Anchor href url                                             | request url                        |  ----    |
+| target        | Target to render on success request response                | HTML element id                    |  ----    |
+| error         | Target to render on error request response                  | HTML element id                    |  ----    |
+| force_refresh | Adds a random key to href params to prevent browser's cache | true, false                        |  false   |
+
 Testing
 =
 
